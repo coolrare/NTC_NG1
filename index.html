@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>AngularJS 專案練習</h1>
+
+    <div ng-controller="MainController as vm">
+        商品名稱: <input type="text" ng-model="vm.PName"><br>
+        商品價格: <input type="number" ng-model="vm.Price"><br>
+        購買數量: <input type="number" ng-model="vm.Qty"><br>
+        <h3>
+            您購買 {{ vm.PName }} 商品，
+            單價 NT$ {{ vm.Price | number:0}}，
+            購買 {{ vm.Qty||0 }} 件，
+            小計 {{ vm.Subtotal(vm.Price, vm.Qty) | currency:'NT$':0 }} 元。
+        </h3>
+        
+        <button type="button" ng-click="vm.add()">加入購物車</button>
+
+        <input type="checkbox" ng-model="vm.debug">
+        <pre ng-if="vm.debug">{{ vm.carts | json }}</pre>
+
+        <table class="table table-striped">
+            <tr>
+                <th>#</th>
+                <th>商品名稱</th>
+                <th>單價</th>
+                <th>數量</th>
+                <th>小計</th>
+                <th>功能</th>
+            </tr>
+            <tr ng-repeat="item in vm.carts">
+                <td>{{$index+1}}</td>
+                <td>{{item.PName}}</td>
+                <td>{{item.Price}}</td>
+                <td>{{item.Qty}}</td>
+                <td>{{vm.Subtotal(item.Price, item.Qty)}}</td>
+                <td>
+                    <button ng-click="vm.del($index)">刪除</button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    
+</body>
+</html>
