@@ -49,8 +49,14 @@ angular.module('app', [])
         }
 
         vm.edit = function(idx) {
-            vm.carts[idx].Qty2 = vm.carts[idx].Qty;
-            vm.carts[idx].IsEdit = true;
+            vm.carts.forEach((item, i) => {
+                if(i != idx) {
+                    vm.cancel(i);
+                } else {
+                    vm.carts[idx].Qty2 = vm.carts[idx].Qty;
+                    vm.carts[idx].IsEdit = true;
+                }
+            });
         }
 
         vm.cancel = function(idx) {
