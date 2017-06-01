@@ -43,7 +43,7 @@
             <tr ng-repeat="item in vm.carts | filter:{'PName':vm.keyword}">
                 <td>{{$index+1}}</td>
                 <td>
-                    <span ng-switch="item.IsEdit">
+                    <span ng-switch="vm.editItem[$index]">
                         <span ng-switch-when="true">
                             <input type="text"
                                    class="form-control input-sm"
@@ -58,7 +58,7 @@
                     {{item.Price | number}}
                 </td>
                 <td class="text-center">
-                    <span ng-switch="item.IsEdit">
+                    <span ng-switch="vm.editItem[$index]">
                         <span ng-switch-when="true">
                             <input type="number"
                                    class="form-control input-sm"
@@ -74,7 +74,7 @@
                     NT$ {{vm.Subtotal(item.Price, item.Qty) | number}}
                 </td>
                 <td class="text-center">
-                    <span ng-switch="item.IsEdit">
+                    <span ng-switch="vm.editItem[$index]">
                         <span ng-switch-when="true">
                             <button class="btn btn-primary" ng-click="vm.save($index)">儲存</button>
                             <button class="btn btn-default" ng-click="vm.cancel($index)">取消</button>

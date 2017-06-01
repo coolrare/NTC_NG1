@@ -49,25 +49,17 @@ angular.module('app', [])
         }
 
         vm.edit = function(idx) {
-            vm.carts.forEach((item, i) => {
-                if(i == idx) {
-                    delete vm.carts[idx].IsEdit;
-                } else {
-                    vm.editItem = angular.copy(vm.carts[idx]);
-                    vm.carts[idx].IsEdit = true;
-                }
-            });
+            vm.editItem = angular.copy(vm.carts[idx]);
+            vm.editItem[idx] = true;
         }
 
         vm.cancel = function(idx) {
             vm.editItem = {};
-            delete vm.carts[idx].IsEdit;
         }
 
         vm.save = function(idx) {
             vm.carts[idx] = angular.copy(vm.editItem);
             vm.editItem = {};
-            delete vm.carts[idx].IsEdit;
         }
 
         vm.ValidateQty = function(obj, propertyName: string) {
