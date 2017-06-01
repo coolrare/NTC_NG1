@@ -75,4 +75,10 @@ angular.module('app', [])
                 obj[propertyName] = 1;
             }
         }
+
+        vm.empty = function() {
+            if(confirm('你確定要清空購物車嗎？')) {
+                vm.carts = [];
+            }
+        }
     })
