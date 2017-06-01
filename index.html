@@ -41,10 +41,18 @@
                 <td>{{item.PName}}</td>
                 <td>{{item.Price}}</td>
                 <td>{{item.Qty}}</td>
-                <td>{{vm.Subtotal(item.Price, item.Qty)}}</td>
+                <td>{{vm.Subtotal(item.Price, item.Qty) | number}}</td>
                 <td>
                     <button ng-click="vm.del($index)">刪除</button>
                 </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>總計</td>
+                <td>{{ vm.sum() | number }}</td>
+                <td></td>
             </tr>
         </table>
 

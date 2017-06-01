@@ -28,4 +28,12 @@ angular.module('app', [])
         vm.del = function(idx) {
             vm.carts.splice(idx, 1);
         }
+
+        vm.sum = function() {
+            let result = 0;
+            for(let i in vm.carts) {
+                result += vm.Subtotal(vm.carts[i].Price, vm.carts[i].Qty);
+            }
+            return result;
+        }
     })
