@@ -69,11 +69,15 @@ angular.module('app', [])
         }
 
         vm.submit = function() {
-            vm.carts.forEach(item => {
-                $http.post('/carts', item)
-                    .then(function() {
+            // vm.carts.forEach(item => {
+            //     $http.post('/carts', item)
+            //         .then(function() {
+            //         });
+            // });
 
-                    });
-            });
+            $http.post('/carts', vm.carts)
+                .then(function() {
+                    vm.carts = [];
+                });
         }
     })
