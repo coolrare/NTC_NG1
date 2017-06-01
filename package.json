@@ -15,7 +15,7 @@
   "scripts": {
     "start": "concurrently \"npm run build\" \"npm run serve\"",
     "build": "tsc -w --sourceMap",
-    "serve": "lite-server"
+    "serve": "json-server -w db.json --static ."
   },
   "keywords": [
     "AngularJS"

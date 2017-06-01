@@ -94,7 +94,11 @@
                 <td class="text-right">
                     NT$ {{ vm.sum() | number }}
                 </td>
-                <td></td>
+                <td>
+                    <button type="button"
+                            class="btn btn-success"
+                            ng-click="vm.submit()">送出訂單</button>
+                </td>
             </tr>
         </table>
 

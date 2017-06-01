@@ -1,5 +1,5 @@
 angular.module('app', [])
-    .controller('MainController', function() {
+    .controller('MainController', function($http) {
         //  ng-init="PName='BMW';Price=1990000;Qty=5"
         var vm = this;
 
@@ -9,18 +9,12 @@ angular.module('app', [])
             Qty: 1
         };
 
-        vm.carts = [
-            {
-                PName: 'T-Shirt - M',
-                Price: 399,
-                Qty: 3
-            },
-            {
-                PName: '雨傘',
-                Price: 80,
-                Qty: 5
-            }
-        ];
+        vm.carts = [];
+
+        // $http.get('/carts').then(function(result) {
+        //     console.log(result.data);
+        //     vm.carts = result.data;
+        // });
 
         vm.editItem = {};
 
@@ -72,5 +66,14 @@ angular.module('app', [])
             if(confirm('你確定要清空購物車嗎？')) {
                 vm.carts = [];
             }
+        }
+
+        vm.submit = function() {
+            vm.carts.forEach(item => {
+                $http.post('/carts', item)
+                    .then(function() {
+
+                    });
+            });
         }
     })
