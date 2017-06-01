@@ -21,11 +21,13 @@
             購買 {{ vm.Qty||0 }} 件，
             小計 {{ vm.Subtotal(vm.Price, vm.Qty) | currency:'NT$':0 }} 元。
         </h3>
-        
-        <button type="button" ng-click="vm.add()">加入購物車</button>
+
+        <button type="button" class="btn" ng-click="vm.add()">加入購物車</button>
 
         <input type="checkbox" ng-model="vm.debug">
         <pre ng-if="vm.debug">{{ vm.carts | json }}</pre>
+
+        <br><br>
 
         <table class="table table-bordered">
             <tr>
@@ -41,7 +43,7 @@
                 <td>
                     <span ng-switch="item.IsEdit">
                         <span ng-switch-when="true">
-                            <input type="text" 
+                            <input type="text"
                                    class="form-control input-sm"
                                    ng-model="item.PName">
                         </span>
@@ -53,7 +55,7 @@
                 <td class="text-right">
                     <span ng-switch="item.IsEdit">
                         <span ng-switch-when="true">
-                            <input type="number" 
+                            <input type="number"
                                    class="form-control input-sm"
                                    ng-model="item.Price">
                         </span>
@@ -65,7 +67,7 @@
                 <td class="text-center">
                     <span ng-switch="item.IsEdit">
                         <span ng-switch-when="true">
-                            <input type="number" 
+                            <input type="number"
                                    class="form-control input-sm"
                                    ng-model="item.Qty">
                         </span>
@@ -78,14 +80,14 @@
                     NT$ {{vm.Subtotal(item.Price, item.Qty) | number}}
                 </td>
                 <td class="text-center">
-                    <button ng-click="vm.del($index)">刪除</button>
+                    <button class="btn btn-danger" ng-click="vm.del($index)">刪除</button>
 
                     <span ng-switch="item.IsEdit">
                         <span ng-switch-when="true">
-                            <button ng-click="vm.save($index)">儲存</button>
+                            <button class="btn btn-primary" ng-click="vm.save($index)">儲存</button>
                         </span>
                         <span ng-switch-default>
-                            <button ng-click="vm.edit($index)">編輯</button>
+                            <button class="btn btn-default" ng-click="vm.edit($index)">編輯</button>
                         </span>
                     </span>
                 </td>
@@ -103,6 +105,6 @@
         </table>
 
     </div>
-    
+
 </body>
 </html>
