@@ -14,7 +14,7 @@
     <div ng-controller="MainController as vm">
         商品名稱: <input type="text" ng-model="vm.PName"><br>
         商品價格: <input type="number" ng-model="vm.Price"><br>
-        購買數量: <input type="number" ng-model="vm.Qty"><br>
+        購買數量: <input type="number" ng-model="vm.Qty" ng-change="vm.ValidateQty(vm, 'Qty')"><br>
         <h3>
             您購買 {{ vm.PName }} 商品，
             單價 NT$ {{ vm.Price | number:0}}，
@@ -62,7 +62,8 @@
                         <span ng-switch-when="true">
                             <input type="number"
                                    class="form-control input-sm"
-                                   ng-model="item.Qty2">
+                                   ng-model="item.Qty2"
+                                   ng-change="vm.ValidateQty(item, 'Qty2')">
                         </span>
                         <span ng-switch-default>
                             {{item.Qty}}

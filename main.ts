@@ -69,4 +69,10 @@ angular.module('app', [])
             delete vm.carts[idx].Qty2;
             delete vm.carts[idx].IsEdit;
         }
+
+        vm.ValidateQty = function(obj, propertyName: string) {
+            if (obj[propertyName] <= 0) {
+                obj[propertyName] = 1;
+            }
+        }
     })
