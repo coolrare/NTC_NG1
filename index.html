@@ -63,7 +63,7 @@
                             <input type="number"
                                    class="form-control input-sm"
                                    ng-model="vm.editItem.Qty"
-                                   ng-change="vm.ValidateQty(item, 'Qty2')">
+                                   ng-change="vm.ValidateQty(vm.editItem, 'Qty')">
                         </span>
                         <span ng-switch-default>
                             {{item.Qty}}
