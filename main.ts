@@ -22,6 +22,8 @@ angular.module('app', [])
             }
         ];
 
+        vm.editItem = {};
+
         vm.Subtotal = function(Price, Qty) {
             let sum = Price * Qty;
             if(Qty >= 10) {
@@ -48,23 +50,23 @@ angular.module('app', [])
 
         vm.edit = function(idx) {
             vm.carts.forEach((item, i) => {
-                if(i != idx) {
-                    vm.cancel(i);
+                if(i == idx) {
+                    delete vm.carts[idx].IsEdit;
                 } else {
-                    vm.carts[idx].Qty2 = vm.carts[idx].Qty;
+                    vm.editItem = angular.copy(vm.carts[idx]);
                     vm.carts[idx].IsEdit = true;
                 }
             });
         }
 
         vm.cancel = function(idx) {
-            delete vm.carts[idx].Qty2;
+            vm.editItem = {};
             delete vm.carts[idx].IsEdit;
         }
 
         vm.save = function(idx) {
-            vm.carts[idx].Qty = vm.carts[idx].Qty2;
-            delete vm.carts[idx].Qty2;
+            vm.carts[idx] = angular.copy(vm.editItem);
+            vm.editItem = {};
             delete vm.carts[idx].IsEdit;
         }
 

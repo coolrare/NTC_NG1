@@ -47,7 +47,7 @@
                         <span ng-switch-when="true">
                             <input type="text"
                                    class="form-control input-sm"
-                                   ng-model="item.PName">
+                                   ng-model="vm.editItem.PName">
                         </span>
                         <span ng-switch-default>
                             {{item.PName}}
@@ -62,7 +62,7 @@
                         <span ng-switch-when="true">
                             <input type="number"
                                    class="form-control input-sm"
-                                   ng-model="item.Qty2"
+                                   ng-model="vm.editItem.Qty"
                                    ng-change="vm.ValidateQty(item, 'Qty2')">
                         </span>
                         <span ng-switch-default>
