@@ -2,10 +2,10 @@ angular.module('app', [])
     .controller('MainController', function() {
         //  ng-init="PName='BMW';Price=1990000;Qty=5"
         var vm = this;
-        
-        vm.PName = 'BMW';
-        vm.Price = 19900000;
-        vm.Qty = 5;
+
+        vm.PName = '勃肯鞋';
+        vm.Price = 2980;
+        vm.Qty = 1;
 
         vm.Subtotal = function(Price, Qty) {
             let sum = Price * Qty;
