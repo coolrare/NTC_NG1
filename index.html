@@ -53,23 +53,14 @@
                     </span>
                 </td>
                 <td class="text-right">
-                    <span ng-switch="item.IsEdit">
-                        <span ng-switch-when="true">
-                            <input type="number"
-                                   class="form-control input-sm"
-                                   ng-model="item.Price">
-                        </span>
-                        <span ng-switch-default>
-                            {{item.Price | number}}
-                        </span>
-                    </span>
+                    {{item.Price | number}}
                 </td>
                 <td class="text-center">
                     <span ng-switch="item.IsEdit">
                         <span ng-switch-when="true">
                             <input type="number"
                                    class="form-control input-sm"
-                                   ng-model="item.Qty">
+                                   ng-model="item.Qty2">
                         </span>
                         <span ng-switch-default>
                             {{item.Qty}}
@@ -80,13 +71,13 @@
                     NT$ {{vm.Subtotal(item.Price, item.Qty) | number}}
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-danger" ng-click="vm.del($index)">刪除</button>
-
                     <span ng-switch="item.IsEdit">
                         <span ng-switch-when="true">
                             <button class="btn btn-primary" ng-click="vm.save($index)">儲存</button>
+                            <button class="btn btn-default" ng-click="vm.cancel($index)">取消</button>
                         </span>
                         <span ng-switch-default>
+                            <button class="btn btn-danger" ng-click="vm.del($index)">刪除</button>
                             <button class="btn btn-default" ng-click="vm.edit($index)">編輯</button>
                         </span>
                     </span>

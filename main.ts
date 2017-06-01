@@ -49,10 +49,18 @@ angular.module('app', [])
         }
 
         vm.edit = function(idx) {
+            vm.carts[idx].Qty2 = vm.carts[idx].Qty;
             vm.carts[idx].IsEdit = true;
         }
 
+        vm.cancel = function(idx) {
+            delete vm.carts[idx].Qty2;
+            delete vm.carts[idx].IsEdit;
+        }
+
         vm.save = function(idx) {
+            vm.carts[idx].Qty = vm.carts[idx].Qty2;
+            delete vm.carts[idx].Qty2;
             delete vm.carts[idx].IsEdit;
         }
     })
