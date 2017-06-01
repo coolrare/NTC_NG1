@@ -29,23 +29,65 @@
 
         <table class="table table-bordered">
             <tr>
-                <th class="text-center">#</th>
+                <th class="text-center" width="30">#</th>
                 <th class="text-center">商品名稱</th>
-                <th class="text-center">單價</th>
-                <th class="text-center">數量</th>
-                <th class="text-center" width="150">小計</th>
-                <th class="text-center">功能</th>
+                <th class="text-center" width="120">單價</th>
+                <th class="text-center" width="80">數量</th>
+                <th class="text-center" width="100">小計</th>
+                <th class="text-center" width="150">功能</th>
             </tr>
             <tr ng-repeat="item in vm.carts">
                 <td>{{$index+1}}</td>
-                <td>{{item.PName}}</td>
-                <td>{{item.Price}}</td>
-                <td>{{item.Qty}}</td>
+                <td>
+                    <span ng-switch="item.IsEdit">
+                        <span ng-switch-when="true">
+                            <input type="text" 
+                                   class="form-control input-sm"
+                                   ng-model="item.PName">
+                        </span>
+                        <span ng-switch-default>
+                            {{item.PName}}
+                        </span>
+                    </span>
+                </td>
+                <td class="text-right">
+                    <span ng-switch="item.IsEdit">
+                        <span ng-switch-when="true">
+                            <input type="number" 
+                                   class="form-control input-sm"
+                                   ng-model="item.Price">
+                        </span>
+                        <span ng-switch-default>
+                            {{item.Price | number}}
+                        </span>
+                    </span>
+                </td>
+                <td class="text-center">
+                    <span ng-switch="item.IsEdit">
+                        <span ng-switch-when="true">
+                            <input type="number" 
+                                   class="form-control input-sm"
+                                   ng-model="item.Qty">
+                        </span>
+                        <span ng-switch-default>
+                            {{item.Qty}}
+                        </span>
+                    </span>
+                </td>
                 <td class="text-right">
                     NT$ {{vm.Subtotal(item.Price, item.Qty) | number}}
                 </td>
-                <td>
+                <td class="text-center">
                     <button ng-click="vm.del($index)">刪除</button>
+
+                    <span ng-switch="item.IsEdit">
+                        <span ng-switch-when="true">
+                            <button ng-click="vm.save($index)">儲存</button>
+                        </span>
+                        <span ng-switch-default>
+                            <button ng-click="vm.edit($index)">編輯</button>
+                        </span>
+                    </span>
                 </td>
             </tr>
             <tr>

@@ -15,7 +15,18 @@ angular.module('app', [])
             return sum;
         }
 
-        vm.carts = [];
+        vm.carts = [
+            {
+                PName: 'T-Shirt - M',
+                Price: 399,
+                Qty: 3
+            },
+            {
+                PName: '雨傘',
+                Price: 80,
+                Qty: 5
+            }
+        ];
 
         vm.add = function() {
             vm.carts.push({
@@ -35,5 +46,13 @@ angular.module('app', [])
                 result += vm.Subtotal(vm.carts[i].Price, vm.carts[i].Qty);
             }
             return result;
+        }
+
+        vm.edit = function(idx) {
+            vm.carts[idx].IsEdit = true;
+        }
+
+        vm.save = function(idx) {
+            delete vm.carts[idx].IsEdit;
         }
     })
