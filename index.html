@@ -12,14 +12,14 @@
     <h1>AngularJS 專案練習</h1>
 
     <div ng-controller="MainController as vm">
-        商品名稱: <input type="text" ng-model="vm.PName"><br>
-        商品價格: <input type="number" ng-model="vm.Price"><br>
-        購買數量: <input type="number" ng-model="vm.Qty" ng-change="vm.ValidateQty(vm, 'Qty')"><br>
+        商品名稱: <input type="text" ng-model="vm.default.PName"><br>
+        商品價格: <input type="number" ng-model="vm.default.Price"><br>
+        購買數量: <input type="number" ng-model="vm.default.Qty" ng-change="vm.ValidateQty(vm.default, 'Qty')"><br>
         <h3>
-            您購買 {{ vm.PName }} 商品，
-            單價 NT$ {{ vm.Price | number:0}}，
-            購買 {{ vm.Qty||0 }} 件，
-            小計 {{ vm.Subtotal(vm.Price, vm.Qty) | currency:'NT$':0 }} 元。
+            您購買 {{ vm.default.PName }} 商品，
+            單價 NT$ {{ vm.default.Price | number:0}}，
+            購買 {{ vm.default.Qty||0 }} 件，
+            小計 {{ vm.Subtotal(vm.default.Price, vm.default.Qty) | currency:'NT$':0 }} 元。
         </h3>
 
         <button type="button" class="btn" ng-click="vm.add()">加入購物車</button>

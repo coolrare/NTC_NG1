@@ -3,17 +3,11 @@ angular.module('app', [])
         //  ng-init="PName='BMW';Price=1990000;Qty=5"
         var vm = this;
 
-        vm.PName = '勃肯鞋';
-        vm.Price = 2980;
-        vm.Qty = 1;
-
-        vm.Subtotal = function(Price, Qty) {
-            let sum = Price * Qty;
-            if(Qty >= 10) {
-                sum = sum * 0.9;
-            }
-            return sum;
-        }
+        vm.default = {
+            PName: '勃肯鞋',
+            Price: 2980,
+            Qty: 1
+        };
 
         vm.carts = [
             {
@@ -28,12 +22,16 @@ angular.module('app', [])
             }
         ];
 
+        vm.Subtotal = function(Price, Qty) {
+            let sum = Price * Qty;
+            if(Qty >= 10) {
+                sum = sum * 0.9;
+            }
+            return sum;
+        }
+
         vm.add = function() {
-            vm.carts.push({
-                PName: vm.PName,
-                Price: vm.Price,
-                Qty: vm.Qty
-            })
+            vm.carts.push(angular.copy(vm.default));
         }
 
         vm.del = function(idx) {
